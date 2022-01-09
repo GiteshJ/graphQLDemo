@@ -1,0 +1,122 @@
+mutation organization{
+  newOrganization(organization: {
+    name: "Amazon"
+  }){
+    id
+    name
+  }
+}
+
+query organizations{
+  organizations{
+    id
+    name
+  }
+}
+
+mutation department{
+  newDepartment(department: {
+    organizationId: 3
+    name: "Payments"
+  }){
+    id
+    name
+    organization{
+      id
+      name
+    }
+  }
+}
+
+query departments{
+  departments{
+    id
+    name
+    organization{
+      id
+      name
+    }
+    employees{
+      id
+      firstName
+      department{
+        name
+      }
+      organization{
+        name
+      }
+    }
+  }
+}
+
+mutation newemployee{
+  newEmployee(employee: {
+    firstName: "Sunder"
+    lastName: "Pichai"
+    position: "CEO"
+    salary: 1200000
+    age: 34
+    organizationId: 3
+    departmentId: 5
+  }){
+    id
+    firstName
+    lastName
+    position
+    salary
+    age
+    department{
+      name
+    }
+    organization{
+      name
+    }
+  }
+}
+
+query employees{
+  employees{
+    id
+    firstName
+    organization{
+      name
+    }
+    department{
+      name
+    }
+  }
+}
+
+query employee{
+  employee(id: 6){
+    id
+    firstName
+    organization{
+      name
+    }
+    department{
+      name
+    }
+  }
+}
+
+query employeeWithFilter{
+  employeesWithFilter(filter: {
+    salary: {
+      operator: "gt"
+      value: "30"
+    },
+    age: {
+      operator: "gt"
+      value: "30"
+    },
+    position: {
+      operator: "eq",
+      value: "CEO"
+    }
+  }) {
+    id
+    firstName
+    lastName
+  }
+}
