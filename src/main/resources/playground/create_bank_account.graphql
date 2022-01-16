@@ -1,0 +1,11 @@
+mutation CREATE_BANK_ACCOUNT{
+    createBankAccount(input: { firstName: "" age: 50}) {
+        id
+        currency
+        client {
+            firstName
+        }
+        createdAt
+        createdOn
+    }
+}

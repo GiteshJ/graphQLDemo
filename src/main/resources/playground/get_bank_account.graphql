@@ -1,0 +1,30 @@
+# Gets bank account
+query GET_BANK_ACCOUNT($id: ID) {
+    bankAccount(id: $id) {
+        currency
+        client {
+            id
+            firstName
+            lastName
+        }
+    }
+}
+
+
+# Gets bank accounts
+#query GET_BANK_ACCOUNTS {
+#    bankAccounts(first: 2, after: "MDI0YmI1MDMtNWMwZi00ZDYwLWFhNDQtZGIxOWQ4NzA0MmY0") {
+#        edges {
+#            cursor
+#            node{
+#                id
+#            }
+#        }
+#        pageInfo {
+#            hasNextPage
+#            hasPreviousPage
+#            startCursor
+#            endCursor
+#        }
+#    }
+#}

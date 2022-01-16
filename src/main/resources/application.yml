@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: learn-graphql-java
+  servlet:
+    multipart:
+      max-file-size: 2MB
+  output:
+    ansi:
+      enabled: ALWAYS
+voyager:
+  enabled: true
+
+graphql:
+  servlet:
+    maxQueryDepth: 6
+    exception-handlers-enabled: true
+  playground:
+    enabled: true
+    headers:
+      Authorization: Bearer TOKEN
+      user_id: Gitesh|Jain
+      user_roles: get:bank_account
+    tabs:
+      - name: Get Bank Account
+        query: classpath:playground/get_bank_account.graphql
+        variables: classpath:playground/bank_account_variables.json
+      - name: Create Bank Account
+        query: classpath:playground/create_bank_account.graphql
+        variables: classpath:playground/bank_account_variables.json
+      - name: Update Bank Account
+        query: classpath:playground/update_bank_account.graphql
+        variables: classpath:playground/bank_account_variables.json
+      - name: Bank Account Subscription
+        query: classpath:playground/subscribe_to_bank_account.graphql
+        variables: classpath:playground/bank_account_variables.json
+
+logging:
+  pattern:
+    console: -%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %clr(%X{correlation_id}){red} %m%n%wEx
+

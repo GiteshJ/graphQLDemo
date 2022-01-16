@@ -1,0 +1,3 @@
+scalar NonNegativeInt
+scalar DateTime
+scalar Date
