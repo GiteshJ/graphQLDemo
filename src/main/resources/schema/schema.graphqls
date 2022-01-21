@@ -1,0 +1,42 @@
+type Query {
+  shows(titleFilter: String): [Show]
+  actors(titleFilter: String): [Actor]
+  movies(movieFilter: MovieFilter): [Movie]
+}
+
+type Mutation {
+  addRating(input: RatingInput):Rating
+}
+
+input RatingInput {
+  title: String,
+  stars: Int
+}
+
+type Rating {
+  avgStars: Int
+}
+
+input MovieFilter {
+  movie: String
+  actor: String
+}
+
+type Movie{
+  name: String
+  actors: [Actor]
+  director: Director
+  directorId: Int
+}
+type Show {
+  title: String
+  releaseYear: Int
+}
+
+type Actor{
+  name: String
+}
+
+type Director{
+  name: String
+}
